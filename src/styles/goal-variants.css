@@ -1,0 +1,137 @@
+/* —— Bento: Контекст (печать) + Цель (маяк) —— */
+
+.studio-bento__cell--context,
+.studio-bento__cell--goal {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-left: none;
+}
+
+.studio-bento__cell--context .studio-bento__label,
+.studio-bento__cell--context p,
+.studio-bento__cell--goal .studio-bento__label,
+.studio-bento__cell--goal p,
+.studio-bento__cell--goal .goal-block__icon {
+  position: relative;
+  z-index: 2;
+}
+
+.goal-block__icon {
+  display: none;
+}
+
+/* ═══ КОНТЕКСТ — стиль «Печать» ═══ */
+.studio-bento__cell--context {
+  background: #fffdf8;
+  box-shadow: var(--shadow-sm);
+}
+
+.studio-bento__cell--context::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 2px dashed rgba(27, 94, 69, 0.4);
+  border-radius: calc(var(--radius) - 4px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.studio-bento__cell--context::after {
+  content: "КОНТЕКСТ";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  padding: 4px 10px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgba(27, 94, 69, 0.8);
+  border: 2px solid rgba(27, 94, 69, 0.45);
+  border-radius: 4px;
+  transform: rotate(-6deg);
+  opacity: 0.88;
+  z-index: 1;
+}
+
+.studio-bento__cell--context .studio-bento__label {
+  color: var(--accent);
+}
+
+.studio-bento__cell--context p {
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding-right: 56px;
+}
+
+/* ═══ ЦЕЛЬ — стиль «Маяк» ═══ */
+.studio-bento__cell--goal {
+  padding-top: 14px;
+  color: #fef3c7;
+  background: linear-gradient(
+    160deg,
+    #1c0f05 0%,
+    #78350f 45%,
+    #92400e 100%
+  );
+  box-shadow:
+    0 8px 28px rgba(120, 53, 15, 0.45),
+    inset 0 1px 0 rgba(253, 230, 138, 0.15);
+  animation: beaconPulse 3.5s ease-in-out infinite;
+}
+
+.studio-bento__cell--goal::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(251, 191, 36, 0.55) 0%,
+    transparent 70%
+  );
+  animation: beaconPulse 3.5s ease-in-out infinite;
+  z-index: 0;
+}
+
+.studio-bento__cell--goal::after {
+  content: "◎";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.1rem;
+  color: #fbbf24;
+  text-shadow: 0 0 16px rgba(251, 191, 36, 0.9);
+  z-index: 1;
+}
+
+.studio-bento__cell--goal .studio-bento__label {
+  color: #fde68a;
+  letter-spacing: 0.12em;
+}
+
+.studio-bento__cell--goal p {
+  color: #fffbeb;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@keyframes beaconPulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-bento__cell--goal,
+  .studio-bento__cell--goal::before {
+    animation: none;
+  }
+}

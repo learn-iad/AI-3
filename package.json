@@ -1,0 +1,17 @@
+{
+  "name": "prompt-trainer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "tsx src/lib/evaluatePrompt.test.ts",
+    "predeploy": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.0.3"
+  }
+}
